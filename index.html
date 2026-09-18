@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Video Studio</title>
-
-<style>
+<title>AI Video Studio</title><style>
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +21,6 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background: #0d0f14;
@@ -92,7 +88,6 @@ body {
     text-align: center;
 }
 
-/* Main */
 .main {
     margin-left: 250px;
     width: calc(100% - 250px);
@@ -154,7 +149,6 @@ body {
     font-size: 14px;
 }
 
-/* Create Card */
 .create-card {
     background: linear-gradient(135deg,#171323,#101116);
     border: 1px solid #302544;
@@ -222,7 +216,6 @@ body {
     opacity: .9;
 }
 
-/* Stats */
 .stats {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -254,7 +247,6 @@ body {
     margin-top: 7px;
 }
 
-/* Projects */
 .projects-header {
     display: flex;
     justify-content: space-between;
@@ -307,7 +299,6 @@ body {
     font-size: 11px;
 }
 
-/* Responsive */
 @media(max-width:800px) {
     .sidebar {
         width: 70px;
@@ -350,204 +341,192 @@ body {
         width: 150px;
     }
 }
-</style>
-</head>
-
-<body>
-
-<div class="app">
-
-<aside class="sidebar">
-
-    <div class="logo">
-        <div class="logo-icon">✦</div>
-        <span>AI Video Studio</span>
-    </div>
-
-    <div class="section-title">Workspace</div>
-
-    <nav class="nav">
-        <a href="#" class="active">
-            <div class="icon">⌂</div>
-            <span>Dashboard</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">＋</div>
-            <span>Create Video</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">▣</div>
-            <span>Projects</span>
-        </a>
-    </nav>
-
-    <div class="section-title">AI Tools</div>
-
-    <nav class="nav">
-        <a href="#">
-            <div class="icon">✦</div>
-            <span>Script Writer</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">◉</div>
-            <span>Voiceover</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">◈</div>
-            <span>Visuals</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">▤</div>
-            <span>Thumbnail</span>
-        </a>
-
-        <a href="#">
-            <div class="icon">♫</div>
-            <span>Music</span>
-        </a>
-    </nav>
-
-    <div class="section-title">Account</div>
-
-    <nav class="nav">
-        <a href="#">
-            <div class="icon">⚙</div>
-            <span>Settings</span>
-        </a>
-    </nav>
-
-</aside>
-
-
-<main class="main">
-
-    <header class="topbar">
-        <input class="search" placeholder="Search projects...">
-
-        <div class="user">
-            <span>100 Credits</span>
-            <div class="avatar">N</div>
-        </div>
-    </header>
-
-
-    <section class="content">
-
-        <div class="welcome">
-            <h1>Welcome back 👋</h1>
-            <p>Create professional videos with AI in minutes.</p>
-        </div>
-
-
-        <div class="create-card">
-
-            <h2>Create a new video</h2>
-
-            <p>
-                Enter your idea and let AI turn it into a complete video.
-            </p>
-
-            <div class="idea-box">
-
-                <input
-                    class="idea-input"
-                    id="idea"
-                    placeholder="Example: 10 amazing facts about space..."
-                >
-
-                <button class="create-btn" onclick="createVideo()">
-                    ✦ Generate
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
-                <div class="stat-label">TOTAL VIDEOS</div>
-                <div class="stat-value">0</div>
-                <div class="stat-small">Ready to create</div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">AI CREDITS</div>
-                <div class="stat-value">100</div>
-                <div class="stat-small">Available credits</div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">PROJECTS</div>
-                <div class="stat-value">0</div>
-                <div class="stat-small">Your workspace</div>
-            </div>
-
-        </div>
-
-
-        <div class="projects-header">
-            <h2>Recent Projects</h2>
-            <div class="view-all">View all →</div>
-        </div>
-
-
-        <div class="projects">
-
-            <div class="project">
-                <div class="thumbnail">🎬</div>
-                <div class="project-info">
-                    <h3>No projects yet</h3>
-                    <p>Your generated videos will appear here.</p>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="thumbnail">✨</div>
-                <div class="project-info">
-                    <h3>AI Video Generator</h3>
-                    <p>Start creating your first project.</p>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="thumbnail">🚀</div>
-                <div class="project-info">
-                    <h3>Bring your idea to life</h3>
-                    <p>AI powered video creation.</p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
+</style></head><body><div class="app"><aside class="sidebar"><div class="logo">
+    <div class="logo-icon">✦</div>
+    <span>AI Video Studio</span>
 </div>
 
+<div class="section-title">Workspace</div>
 
-<script>
+<nav class="nav">
+    <a href="#" class="active">
+        <div class="icon">⌂</div>
+        <span>Dashboard</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">＋</div>
+        <span>Create Video</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">▣</div>
+        <span>Projects</span>
+    </a>
+</nav>
+
+<div class="section-title">AI Tools</div>
+
+<nav class="nav">
+    <a href="#">
+        <div class="icon">✦</div>
+        <span>Script Writer</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">◉</div>
+        <span>Voiceover</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">◈</div>
+        <span>Visuals</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">▤</div>
+        <span>Thumbnail</span>
+    </a>
+
+    <a href="#">
+        <div class="icon">♫</div>
+        <span>Music</span>
+    </a>
+</nav>
+
+<div class="section-title">Account</div>
+
+<nav class="nav">
+    <a href="#">
+        <div class="icon">⚙</div>
+        <span>Settings</span>
+    </a>
+</nav>
+
+</aside><main class="main"><header class="topbar">
+    <input class="search" placeholder="Search projects...">
+
+    <div class="user">
+        <span>100 Credits</span>
+        <div class="avatar">N</div>
+    </div>
+</header>
+
+<section class="content">
+
+    <div class="welcome">
+        <h1>Welcome back 👋</h1>
+        <p>Create professional videos with AI in minutes.</p>
+    </div>
+
+    <div class="create-card">
+
+        <h2>Create a new video</h2>
+
+        <p>
+            Enter your idea and let AI turn it into a complete video.
+        </p>
+
+        <div class="idea-box">
+
+            <input
+                type="text"
+                class="idea-input"
+                id="idea"
+                name="idea"
+                autocomplete="off"
+                placeholder="Example: 10 amazing facts about space..."
+            >
+
+            <button
+                type="button"
+                class="create-btn"
+                onclick="createVideo()">
+                ✦ Generate
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-label">TOTAL VIDEOS</div>
+            <div class="stat-value">0</div>
+            <div class="stat-small">Ready to create</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">AI CREDITS</div>
+            <div class="stat-value">100</div>
+            <div class="stat-small">Available credits</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">PROJECTS</div>
+            <div class="stat-value">0</div>
+            <div class="stat-small">Your workspace</div>
+        </div>
+
+    </div>
+
+    <div class="projects-header">
+        <h2>Recent Projects</h2>
+        <div class="view-all">View all →</div>
+    </div>
+
+    <div class="projects">
+
+        <div class="project">
+            <div class="thumbnail">🎬</div>
+            <div class="project-info">
+                <h3>No projects yet</h3>
+                <p>Your generated videos will appear here.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="thumbnail">✨</div>
+            <div class="project-info">
+                <h3>AI Video Generator</h3>
+                <p>Start creating your first project.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="thumbnail">🚀</div>
+            <div class="project-info">
+                <h3>Bring your idea to life</h3>
+                <p>AI powered video creation.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</main></div><script>
 function createVideo() {
 
-    const idea = document.getElementById("idea").value.trim();
+    const input = document.getElementById("idea");
 
-    if (!idea) {
+    if (!input) {
+        alert("Video idea field was not found.");
+        return;
+    }
+
+    const idea = input.value.trim();
+
+    if (idea.length === 0) {
         alert("Please enter your video idea first.");
+        input.focus();
         return;
     }
 
     alert(
-        "Your video project has been created!\\n\\nIdea: " + idea
+        "Your video project has been created!\n\nIdea: " + idea
     );
 }
-</script>
-
-</body>
-              </html>
+</script></body>
+            </html>
