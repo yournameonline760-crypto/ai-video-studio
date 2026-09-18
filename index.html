@@ -1,1 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Video Studio</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #08090d;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #0d0f14;
+    border-right: 1px solid #20232b;
+    padding: 22px 16px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#7c3aed,#ec4899);
+    font-size: 19px;
+}
+
+.section-title {
+    color: #777d8c;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin: 22px 10px 9px;
+    letter-spacing: 1px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav a {
+    color: #aeb4c2;
+    text-decoration: none;
+    padding: 11px 12px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.nav a:hover,
+.nav a.active {
+    background: #1b1727;
+    color: #fff;
+}
+
+.icon {
+    width: 20px;
+    text-align: center;
+}
+
+/* Main */
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.topbar {
+    height: 70px;
+    border-bottom: 1px solid #20232b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.search {
+    background: #11141b;
+    border: 1px solid #252934;
+    border-radius: 9px;
+    padding: 10px 15px;
+    width: 270px;
+    color: #777d8c;
+    font-size: 13px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#7c3aed,#ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.content {
+    padding: 38px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.welcome {
+    margin-bottom: 28px;
+}
+
+.welcome h1 {
+    font-size: 31px;
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    color: #858b99;
+    font-size: 14px;
+}
+
+/* Create Card */
+.create-card {
+    background: linear-gradient(135deg,#171323,#101116);
+    border: 1px solid #302544;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.create-card:after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -100px;
+    top: -120px;
+    background: #7c3aed;
+    opacity: .10;
+    filter: blur(60px);
+    border-radius: 50%;
+}
+
+.create-card h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.create-card p {
+    color: #9298a6;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.idea-box {
+    display: flex;
+    gap: 12px;
+}
+
+.idea-input {
+    flex: 1;
+    background: #0b0d12;
+    border: 1px solid #2b2e38;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    outline: none;
+}
+
+.idea-input:focus {
+    border-color: #7c3aed;
+}
+
+.create-btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 0 23px;
+    background: linear-gradient(135deg,#7c3aed,#a855f7);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create-btn:hover {
+    opacity: .9;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat {
+    background: #0f1117;
+    border: 1px solid #20232b;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.stat-label {
+    color: #858b99;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.stat-small {
+    color: #4ade80;
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+/* Projects */
+.projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.projects-header h2 {
+    font-size: 20px;
+}
+
+.view-all {
+    color: #a855f7;
+    font-size: 13px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 17px;
+}
+
+.project {
+    background: #0f1117;
+    border: 1px solid #20232b;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.thumbnail {
+    height: 145px;
+    background: linear-gradient(135deg,#171a27,#29203b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+}
+
+.project-info {
+    padding: 15px;
+}
+
+.project-info h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.project-info p {
+    color: #777d8c;
+    font-size: 11px;
+}
+
+/* Responsive */
+@media(max-width:800px) {
+    .sidebar {
+        width: 70px;
+        padding: 18px 10px;
+    }
+
+    .logo span,
+    .nav a span,
+    .section-title {
+        display: none;
+    }
+
+    .nav a {
+        justify-content: center;
+    }
+
+    .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .content {
+        padding: 22px;
+    }
+
+    .stats,
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    .idea-box {
+        flex-direction: column;
+    }
+
+    .create-btn {
+        padding: 13px;
+    }
+
+    .search {
+        width: 150px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">✦</div>
+        <span>AI Video Studio</span>
+    </div>
+
+    <div class="section-title">Workspace</div>
+
+    <nav class="nav">
+        <a href="#" class="active">
+            <div class="icon">⌂</div>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">＋</div>
+            <span>Create Video</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">▣</div>
+            <span>Projects</span>
+        </a>
+    </nav>
+
+    <div class="section-title">AI Tools</div>
+
+    <nav class="nav">
+        <a href="#">
+            <div class="icon">✦</div>
+            <span>Script Writer</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">◉</div>
+            <span>Voiceover</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">◈</div>
+            <span>Visuals</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">▤</div>
+            <span>Thumbnail</span>
+        </a>
+
+        <a href="#">
+            <div class="icon">♫</div>
+            <span>Music</span>
+        </a>
+    </nav>
+
+    <div class="section-title">Account</div>
+
+    <nav class="nav">
+        <a href="#">
+            <div class="icon">⚙</div>
+            <span>Settings</span>
+        </a>
+    </nav>
+
+</aside>
+
+
+<main class="main">
+
+    <header class="topbar">
+        <input class="search" placeholder="Search projects...">
+
+        <div class="user">
+            <span>100 Credits</span>
+            <div class="avatar">N</div>
+        </div>
+    </header>
+
+
+    <section class="content">
+
+        <div class="welcome">
+            <h1>Welcome back 👋</h1>
+            <p>Create professional videos with AI in minutes.</p>
+        </div>
+
+
+        <div class="create-card">
+
+            <h2>Create a new video</h2>
+
+            <p>
+                Enter your idea and let AI turn it into a complete video.
+            </p>
+
+            <div class="idea-box">
+
+                <input
+                    class="idea-input"
+                    id="idea"
+                    placeholder="Example: 10 amazing facts about space..."
+                >
+
+                <button class="create-btn" onclick="createVideo()">
+                    ✦ Generate
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                <div class="stat-label">TOTAL VIDEOS</div>
+                <div class="stat-value">0</div>
+                <div class="stat-small">Ready to create</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">AI CREDITS</div>
+                <div class="stat-value">100</div>
+                <div class="stat-small">Available credits</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-label">PROJECTS</div>
+                <div class="stat-value">0</div>
+                <div class="stat-small">Your workspace</div>
+            </div>
+
+        </div>
+
+
+        <div class="projects-header">
+            <h2>Recent Projects</h2>
+            <div class="view-all">View all →</div>
+        </div>
+
+
+        <div class="projects">
+
+            <div class="project">
+                <div class="thumbnail">🎬</div>
+                <div class="project-info">
+                    <h3>No projects yet</h3>
+                    <p>Your generated videos will appear here.</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="thumbnail">✨</div>
+                <div class="project-info">
+                    <h3>AI Video Generator</h3>
+                    <p>Start creating your first project.</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="thumbnail">🚀</div>
+                <div class="project-info">
+                    <h3>Bring your idea to life</h3>
+                    <p>AI powered video creation.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+
+<script>
+function createVideo() {
+
+    const idea = document.getElementById("idea").value.trim();
+
+    if (!idea) {
+        alert("Please enter your video idea first.");
+        return;
+    }
+
+    alert(
+        "Your video project has been created!\\n\\nIdea: " + idea
+    );
+}
+</script>
+
+</body>
+              </html>
